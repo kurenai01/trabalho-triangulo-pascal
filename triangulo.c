@@ -1,27 +1,38 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<locale.h>
+#include<math.h>
 
 int main() {
-    int n, i, j;
-    int pascal[20][20];
 
-    printf("Digite o numero de linhas (1 a 20): ");
-    scanf("%d", &n);
+    setlocale(LC_ALL, "Portuguese");
+    int numero;
+    int matriz[22][22];
 
-    if (n < 1 || n > 20) {
-        printf("Numero invalido!\n");
-        return 1;
+    printf("Quantidade de linhas (1 a 22)\n");
+    printf("Digite um valor:\n");
+    scanf("%d", &numero);
+
+    if(numero > 25){
+
+        printf("numero de linhas invalido!");
+        return 0;
     }
 
-    for (i = 0; i < n; i++) {
-        for (j = 0; j <= i; j++) {
+    for (int i = 0; i < numero; i++) {
+        for (int j = 0; j <= i; j++) {
+
             if (j == 0 || j == i) {
-                pascal[i][j] = 1;
-            } else {
-                pascal[i][j] = pascal[i - 1][j - 1]
-                             + pascal[i - 1][j];
+
+                matriz[i][j] = 1;
+
+            }else{
+
+                matriz[i][j] = matriz[i - 1][j - 1] + matriz[i - 1][j];
             }
 
-            printf("%d ", pascal[i][j]);
+            printf("%d ", matriz[i][j]);
+
         }
         printf("\n");
     }
